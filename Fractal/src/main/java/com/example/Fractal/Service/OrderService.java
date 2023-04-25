@@ -16,10 +16,23 @@ public class OrderService {
     public List<Order> allOrders() {
         return orderRepository.findAll();
     }
-    public Optional<Order> getProductById(ObjectId id) {
+    public Optional<Order> getOrderById(ObjectId id) {
         return orderRepository.findById(id);
     }
-    public Order updateOrder(ObjectId id) {
-        return orderRepository.save(getProductById(id).get());
+    public Order createOrder(Order order) {
+        return orderRepository.save(order);
     }
+    public Order updateOrder(ObjectId id,Order order) {
+        Order orderdb= orderRepository.findById(id).orElseThrow(RuntimeException::new);
+        orderdb.setOrderNumber(order.getOrderNumber());
+        orderdb.setDate(order.getDate());
+        orderdb.setFinalPrice(order.getFinalPrice());
+        orderdb.setProductNumber(order.getProductNumber());
+        orderdb.setProductsIds(order.getProductsIds());
+        return orderRepository.save(orderdb);
+    }
+    public void deleteOrder(ObjectId id) {
+        orderRepository.deleteById(id);
+    }
+
 }

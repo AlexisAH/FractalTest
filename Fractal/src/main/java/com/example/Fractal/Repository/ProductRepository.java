@@ -8,5 +8,4 @@ import org.springframework.stereotype.Repository;
 //Espeficicamos el tipo de dato que vamos a utilizar y el tipo de dato del id
 @Repository
 public interface ProductRepository extends MongoRepository<Product, ObjectId> {
-    //Optional<Product> findBy_id(ObjectId id);
 }

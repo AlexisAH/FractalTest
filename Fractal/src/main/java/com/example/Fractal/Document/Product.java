@@ -15,8 +15,7 @@ public class Product {
     @Id
     private ObjectId id;
     private String ProductName;
-    private Float UnitPrice;
+    private Integer UnitPrice;
     private Integer Quantity;
     private Float TotalPrice;
-
 }

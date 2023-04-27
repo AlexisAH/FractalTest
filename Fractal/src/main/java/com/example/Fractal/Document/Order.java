@@ -16,7 +16,7 @@ import java.util.List;
 @NoArgsConstructor
 public class Order {
     @Id
-    private ObjectId id;
+    private String id;
     private String OrderNumber;
     private String Date;
     @DocumentReference

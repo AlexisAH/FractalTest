@@ -23,7 +23,7 @@ public class OrderController {
         return new ResponseEntity<List<Order>>(orderService.allOrders(), HttpStatus.OK);
     }
     @GetMapping("/{id}")
-    public ResponseEntity<Optional<Order>> getOrderById(@PathVariable ObjectId id){
+    public ResponseEntity<Optional<Order>> getOrderById(@PathVariable String id){
         return new ResponseEntity<Optional<Order>>(orderService.getOrderById(id), HttpStatus.OK);
     }
     @PostMapping()
@@ -31,7 +31,7 @@ public class OrderController {
         return new ResponseEntity<Order>(orderService.createOrder(order), HttpStatus.OK);
     }
     @PutMapping("/{id}")
-    public ResponseEntity<Order> updateOrder(@PathVariable ObjectId id,@RequestBody Order order) {
+    public ResponseEntity<Order> updateOrder(@PathVariable String id,@RequestBody Order order) {
        return new ResponseEntity<Order>(orderService.updateOrder(id,order), HttpStatus.OK);
         //validation data
         /*if(order.getOrderNumber().isEmpty() || order.getDate().isEmpty() || order.getFinalPrice().isEmpty() || order.getProductNumber().isEmpty() || order.getProductsIds().isEmpty()){
@@ -42,7 +42,7 @@ public class OrderController {
         }*/
     }
     @DeleteMapping("/{id}")
-    public ResponseEntity<String> deleteOrder(@PathVariable ObjectId id){
+    public ResponseEntity<String> deleteOrder(@PathVariable String id){
         orderService.deleteOrder(id);
         return new ResponseEntity<String>("Order deleted successfully", HttpStatus.OK);
     }

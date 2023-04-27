@@ -22,7 +22,7 @@ public class ProductController {
         return new ResponseEntity<List<Product>>(productService.allProducts(), HttpStatus.OK);
     }
     @GetMapping("/{id}")
-    public ResponseEntity<Optional<Product>> getProductById(@PathVariable ObjectId id){
+    public ResponseEntity<Optional<Product>> getProductById(@PathVariable String id){
         return new ResponseEntity<Optional<Product>>(productService.getProductById(id), HttpStatus.OK);
     }
     @PostMapping

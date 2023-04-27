@@ -16,13 +16,13 @@ public class OrderService {
     public List<Order> allOrders() {
         return orderRepository.findAll();
     }
-    public Optional<Order> getOrderById(ObjectId id) {
+    public Optional<Order> getOrderById(String id) {
         return orderRepository.findById(id);
     }
     public Order createOrder(Order order) {
         return orderRepository.save(order);
     }
-    public Order updateOrder(ObjectId id,Order order) {
+    public Order updateOrder(String id,Order order) {
         Order orderdb= orderRepository.findById(id).orElseThrow(RuntimeException::new);
         orderdb.setOrderNumber(order.getOrderNumber());
         orderdb.setDate(order.getDate());
@@ -31,7 +31,7 @@ public class OrderService {
         orderdb.setProductsIds(order.getProductsIds());
         return orderRepository.save(orderdb);
     }
-    public void deleteOrder(ObjectId id) {
+    public void deleteOrder(String id) {
         orderRepository.deleteById(id);
     }
 
